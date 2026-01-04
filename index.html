@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Content Builder</title>
+
+<style>
+body{
+  direction:rtl;
+  font-family:"Segoe UI",Tahoma;
+  background:#f1f5f9;
+  padding:20px;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  background:#fff;
+  padding:25px;
+  border-radius:12px;
+}
+
+h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+h3{
+  margin-top:30px;
+  border-right:5px solid #6366f1;
+  padding-right:10px;
+}
+
+/* ===== Inputs ===== */
+label{
+  font-size:13px;
+  color:#475569;
+  display:block;
+  margin-bottom:4px;
+}
+
+input,select,textarea{
+  width:100%;
+  padding:8px 10px;
+  margin-bottom:12px;
+  font-size:14px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  box-sizing:border-box;
+}
+
+input:focus,textarea:focus,select:focus{
+  outline:none;
+  border-color:#6366f1;
+  box-shadow:0 0 0 2px rgba(99,102,241,.15);
+}
+
+/* ===== Table ===== */
+table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+}
+
+th,td{
+  border:1px solid #ddd;
+  padding:6px;
+  text-align:center;
+  vertical-align:middle;
+}
+
+td input,
+td select{
+  width:100%;
+  height:34px;
+  padding:4px 6px;
+  font-size:13px;
+  margin:0;
+  box-sizing:border-box;
+}
+
+/* وقت */
+.time-group{
+  display:flex;
+  gap:4px;
+}
+
+/* ===== Cards ===== */
+.card{
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:15px;
+  margin-bottom:15px;
+  background:#fafafa;
+}
+
+/* ===== Buttons ===== */
+button{
+  background:#6366f1;
+  color:#fff;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+  margin-top:10px;
+}
+
+button:disabled{
+  background:#c7c9f9;
+  cursor:not-allowed;
+}
+
+.counter{
+  font-weight:bold;
+  color:#6366f1;
+  margin-bottom:8px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h2>إعداد خطة المحتوى</h2>
+
+<label>اسم التطبيق</label>
+<input id="appName">
+
+<label>نوع الباقة</label>
+<select id="package" onchange="generateAll()">
+  <option value="">اختر</option>
+  <option value="launch">باقة الانطلاق</option>
+  <option value="growth">باقة النمو</option>
+  <option value="leader">باقة الريادة</option>
+</select>
+
+<h3>الإشعارات</h3>
+<div id="notifCounter" class="counter"></div>
+
+<table>
+<thead>
+<tr>
+  <th>العنوان</th>
+  <th>الرسالة</th>
+  <th>الوقت</th>
+  <th>السبب</th>
+</tr>
+</thead>
+<tbody id="notificationsBody"></tbody>
+</table>
+
+<h3>الإعلانات</h3>
+<div id="adsCounter" class="counter"></div>
+<div id="adsContainer"></div>
+
+<h3>تعديلات التصميم</h3>
+<div id="designEdits"></div>
+<button id="designBtn" onclick="addDesignEdit()">+ إضافة تعديل</button>
+
+<h3 id="seasonalTitle">واجهات موسمية</h3>
+<div id="seasonalContainer"></div>
+<button id="seasonalBtn" onclick="addSeasonal()">+ إضافة واجهة</button>
+
+<br><br>
+<button onclick="generatePreview()">معاينة / تحميل PDF</button>
+
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

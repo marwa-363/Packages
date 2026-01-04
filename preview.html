@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Preview</title>
+
+<!-- خط عربي ممتاز -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+  direction: rtl;
+  font-family: "Cairo", sans-serif;
+  background:#e5e7eb;
+  margin:0;
+}
+
+/* صفحة A4 */
+.page{
+  width:210mm;
+  min-height:297mm;
+  background:#fff;
+  margin:0 auto 10px;
+  padding:20mm;
+  box-sizing:border-box;
+  position:relative;
+  page-break-after:always;
+}
+
+/* عناوين */
+h3{
+  font-size:24px;
+  border-bottom:3px solid #2f73fe;
+  margin-bottom:16px;
+  page-break-after:avoid;
+}
+
+/* جدول */
+table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  font-size:16px;
+}
+
+thead{
+  display:table-header-group;
+}
+
+th{
+  background:#2f73fe;
+  color:#fff;
+}
+
+th,td{
+  border:1px solid #ccc;
+  padding:8px;
+  word-break:break-word;
+}
+
+/* منع كسر الصف */
+tr{
+  page-break-inside:avoid;
+}
+
+/* كروت */
+.card{
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  padding:14px;
+  margin-bottom:14px;
+  font-size:16px;
+  page-break-inside:avoid;
+}
+
+/* غلاف */
+.cover{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:100%;
+  text-align:center;
+}
+
+.cover .label{
+  font-size:20px;
+  color:#2f73fe;
+}
+
+.cover .value{
+  font-size:36px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+/* فوتر */
+.footer{
+  position:absolute;
+  bottom:10mm;
+  left:0;
+  right:0;
+  text-align:center;
+  font-size:12px;
+  color:#666;
+}
+</style>
+</head>
+
+<body>
+<div id="pages"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="preview.js"></script>
+</body>
+</html>
